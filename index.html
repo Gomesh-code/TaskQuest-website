@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskQuest - Level Up Your Life</title>
+    <link rel="stylesheet" href="project.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> </head>
+<body>
+
+    <div id="welcome-screen" class="active">
+        <div class="welcome-container">
+            <h1>Welcome Player, to TaskQuest!</h1>
+            <p>A platform where you complete tasks to level up in real life.</p>
+            <input type="text" id="username-input" placeholder="Enter your username" maxlength="15">
+            <h2>Choose Your Class:</h2>
+            <div id="class-selection">
+                <div class="class-card" data-class="Paladin">🛡️<span>Paladin</span></div>
+                <div class="class-card" data-class="Knight">⚔️<span>Knight</span></div>
+                <div class="class-card" data-class="Necromancer">🔮<span>Necromancer</span></div>
+                <div class="class-card" data-class="Assassin">🗡️<span>Assassin</span></div>
+                <div class="class-card" data-class="Healer">💖<span>Healer</span></div>
+                <div class="class-card" data-class="Mage">🧘<span>Mage</span></div>
+            </div>
+            <button id="start-quest-btn" class="glow-button">Begin Your Quest</button>
+        </div>
+    </div>
+
+    <div id="app-container">
+        <header>
+            <div id="player-info">
+                <span id="player-class-icon">🛡️</span>
+                <span id="player-username">Player</span>
+            </div>
+            <div id="player-stats">
+                <span class="level">Level: <span id="level-display">1</span></span>
+                <div class="xp-bar-container">
+                    <div id="xp-bar"></div>
+                </div>
+                <span class="xp-text">XP: <span id="xp-display">0</span> / <span id="xp-needed-display">100</span></span>
+            </div>
+        </header>
+
+        <main>
+            <form id="task-form">
+                <input type="text" id="task-input" placeholder="What is your next quest?" required>
+                <select id="difficulty-select">
+                    <option value="low">Low (10 XP)</option>
+                    <option value="medium">Medium (20 XP)</option>
+                    <option value="high">High (30 XP)</option>
+                </select>
+                <button type="submit" class="glow-button">Add Quest</button>
+            </form>
+
+            <ul id="task-list">
+                </ul>
+        </main>
+
+        <footer>
+            <h2>Achievements</h2>
+            <div id="achievements-list">
+                </div>
+        </footer>
+    </div>
+    
+    <div id="level-up-modal" class="modal-hidden">
+        <div class="modal-content">
+            <h2>Congratulations!</h2>
+            <p>You have reached Level <span id="new-level-display">2</span>!</p>
+            <button id="close-modal-btn">Continue</button>
+        </div>
+    </div>
+
+    <script src="jsproject.js"></script>
+</body>
+</html>
