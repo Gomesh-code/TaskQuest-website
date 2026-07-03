@@ -19,9 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskList = document.getElementById('task-list');
     
     const achievementsList = document.getElementById('achievements-list');
+    
+    // Level Up Modal Elements
     const levelUpModal = document.getElementById('level-up-modal');
     const newLevelDisplay = document.getElementById('new-level-display');
     const closeModalBtn = document.getElementById('close-modal-btn');
+    const playerTitle = document.getElementById('player-title');
+
+    // --- NEW: Title Unlock Modal Elements ---
+    const titleUnlockModal = document.getElementById('title-unlock-modal');
+    const newTitleDisplay = document.getElementById('new-title-display');
+    const closeTitleModalBtn = document.getElementById('close-title-modal-btn');
 
     // Game State
     let state = {
@@ -40,6 +48,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const xpForDifficulty = { low: 10, medium: 20, high: 30 };
     const xpForNextLevel = (level) => Math.round(100 * Math.pow(level, 1.5));
+
+    // ---- TITLE SYSTEM ----
+    const levelTitles = [
+        { level: 350, title: "King Of Code" },
+        { level: 325, title: "Monarch of Shadows Invincible" },
+        { level: 300, title: "Monarch of Shadows Unbeatable" },
+        { level: 275, title: "Monarch of Shadows Supreme" },
+        { level: 260, title: "Monarch of Shadows Legendary" },
+        { level: 250, title: "Archmage of the Realm" },
+        { level: 150, title: "Grandmaster of Shadows" },
+        { level: 100, title: "Champion of the Realm" },
+        { level: 75, title: "King of Yellow and Black" },
+        { level: 65, title: "Monarch of Shadows Master of Abyss" },
+        { level: 55, title: "Monarch of Shadows Rebel leader" },
+        { level: 35, title: "Monarch of Shadows" },
+        { level: 25, title: "Necromancer" },
+        { level: 15, title: "Night Lord" },
+        { level: 2, title: "Assassin" },
+        { level: 1, title: "Wolf Slayer" } // Default starting title
+    ];
 
     // ---- ONBOARDING ----
     let selectedClass = 'Paladin'; // Default
@@ -136,6 +164,9 @@ document.addEventListener('DOMContentLoaded', () => {
         state.xp -= xpNeeded;
         state.level++;
         showLevelUpModal();
+        
+        // Removed the alert from here! The modal check is now handled by the Continue button.
+
         if (state.xp >= xpForNextLevel(state.level)) {
              levelUp(); // Handle multiple level ups
         }
@@ -172,6 +203,11 @@ document.addEventListener('DOMContentLoaded', () => {
         playerUsername.textContent = state.username;
         playerClassIcon.textContent = classIcons[state.playerClass] || '🛡️';
         levelDisplay.textContent = state.level;
+
+        const currentTitleObj = levelTitles.find(t => state.level >= t.level);
+        if (currentTitleObj) {
+            playerTitle.textContent = currentTitleObj.title;
+        }
         const needed = xpForNextLevel(state.level);
         xpDisplay.textContent = state.xp;
         xpNeededDisplay.textContent = needed;
@@ -215,8 +251,26 @@ document.addEventListener('DOMContentLoaded', () => {
         levelUpModal.classList.remove('modal-hidden');
     }
 
+    // --- MODAL BUTTON LISTENERS ---
+    
+    // When clicking "Continue" on the Level Up modal...
     closeModalBtn.addEventListener('click', () => {
+        // 1. Hide the level up modal
         levelUpModal.classList.add('modal-hidden');
+
+        // 2. Check if the exact new level unlocks a title
+        const unlockedTitle = levelTitles.find(t => t.level === state.level);
+        
+        if (unlockedTitle) {
+            // If yes, update the text and show the Title Modal!
+            newTitleDisplay.textContent = unlockedTitle.title;
+            titleUnlockModal.classList.remove('modal-hidden');
+        }
+    });
+
+    // When clicking "Equip & Continue" on the Title Unlock modal...
+    closeTitleModalBtn.addEventListener('click', () => {
+        titleUnlockModal.classList.add('modal-hidden');
     });
 
     // ---- LOCAL STORAGE ----
