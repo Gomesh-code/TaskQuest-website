@@ -302,3 +302,10 @@ footer {
     text-shadow: 0 0 5px var(--glow-color);
     text-transform: uppercase;
 }
+#welcome-screen {
+    display: none; /* Hide everything by default */
+}
+
+#welcome-screen.active {
+    display: flex; /* Only show when we specifically add the 'active' class */
+}
