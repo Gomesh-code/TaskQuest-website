@@ -29,7 +29,7 @@ h1, h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0);
     justify-content: center;
     align-items: center;
     z-index: 100;
@@ -221,6 +221,28 @@ footer {
     align-items: center;
     z-index: 100;
 }
+
+/* --- Modals (Level Up & Title Unlock) --- */
+
+/* This makes BOTH modals float on top of the screen */
+#level-up-modal, #title-unlock-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000; /* Solid black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+/* This ensures BOTH modals stay hidden until the game triggers them */
+#level-up-modal.modal-hidden, #title-unlock-modal.modal-hidden {
+    display: none;
+}
+
 .modal-content {
     background-color: var(--surface-color);
     padding: 2rem 4rem;
@@ -257,4 +279,26 @@ footer {
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.8); }
     to { opacity: 1; transform: scale(1); }
+}
+/* --- Player Title Styles --- */
+#player-info {
+    display: flex;
+    flex-direction: column; /* Stacks name and title */
+    align-items: flex-start;
+}
+
+.name-container {
+    display: flex;
+    align-items: center;
+}
+
+#player-title {
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+    margin-top: 5px;
+    margin-left: 40px; /* Aligns with the username, past the icon */
+    text-shadow: 0 0 5px var(--glow-color);
+    text-transform: uppercase;
 }
