@@ -1,4 +1,3 @@
-
 :root {
     --bg-color: #1a1a1a;
     --surface-color: #2c2c2c;
@@ -302,11 +301,4 @@ footer {
     margin-left: 40px; /* Aligns with the username, past the icon */
     text-shadow: 0 0 5px var(--glow-color);
     text-transform: uppercase;
-}
-#welcome-screen {
-    display: none; /* Hide everything by default */
-}
-
-#welcome-screen.active {
-    display: flex; /* Only show when we specifically add the 'active' class */
 }
