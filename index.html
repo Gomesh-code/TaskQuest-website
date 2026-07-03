@@ -16,17 +16,34 @@
         <div class="welcome-container">
             <h1>Welcome Player, to TaskQuest!</h1>
             <p>A platform where you complete tasks to level up in real life.</p>
+            
             <input type="text" id="username-input" placeholder="Enter your username" maxlength="15">
+            
             <h2>Choose Your Class:</h2>
             <div id="class-selection">
-                <div class="class-card" data-class="Paladin">🛡️<span>Paladin</span></div>
+                <div class="class-card selected" data-class="Paladin">🛡️<span>Paladin</span></div>
                 <div class="class-card" data-class="Knight">⚔️<span>Knight</span></div>
                 <div class="class-card" data-class="Necromancer">🔮<span>Necromancer</span></div>
                 <div class="class-card" data-class="Assassin">🗡️<span>Assassin</span></div>
                 <div class="class-card" data-class="Healer">💖<span>Healer</span></div>
                 <div class="class-card" data-class="Mage">🧘<span>Mage</span></div>
             </div>
-            <button id="start-quest-btn" class="glow-button">Begin Your Quest</button>
+
+            <div style="margin-top: 20px;">
+                <input type="email" id="email-input" placeholder="Email Address" style="margin-bottom: 10px;">
+                <input type="password" id="password-input" placeholder="Password (min 6 characters)">
+            </div>
+
+            <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                <button id="email-login-btn" class="glow-button">Log In</button>
+                <button id="email-signup-btn" class="glow-button">Sign Up</button>
+            </div>
+
+            <p style="margin: 15px 0; font-family: 'Cinzel', serif; color: #aaa;">— OR —</p>
+
+            <button id="google-signin-btn" class="glow-button" style="background-color: #4285F4; color: white; width: 100%;">
+                🌐 Sign in with Google
+            </button>
         </div>
     </div>
 
@@ -87,6 +104,6 @@
         </div>
     </div>
 
-    <script src="jsproject.js"></script>
+    <script type="module" src="jsproject.js"></script>
 </body>
 </html>
