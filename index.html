@@ -8,7 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> </head>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> 
+</head>
 <body>
 
     <div id="welcome-screen" class="active">
@@ -32,8 +33,11 @@
     <div id="app-container">
         <header>
             <div id="player-info">
-                <span id="player-class-icon">🛡️</span>
-                <span id="player-username">Player</span>
+                <div class="name-container">
+                    <span id="player-class-icon">🛡️</span>
+                    <span id="player-username">Player</span>
+                </div>
+                <div id="player-title">Novice</div> 
             </div>
             <div id="player-stats">
                 <span class="level">Level: <span id="level-display">1</span></span>
@@ -71,6 +75,15 @@
             <h2>Congratulations!</h2>
             <p>You have reached Level <span id="new-level-display">2</span>!</p>
             <button id="close-modal-btn">Continue</button>
+        </div>
+    </div>
+
+    <div id="title-unlock-modal" class="modal-hidden">
+        <div class="modal-content">
+            <h2 style="color: #c8a2c8;">Title Unlocked!</h2>
+            <p>You have earned the title:</p>
+            <h3 id="new-title-display" style="font-family: 'Cinzel', serif; font-size: 1.8rem; text-transform: uppercase; margin: 10px 0; text-shadow: 0 0 10px rgba(200, 162, 200, 0.5);">Title</h3>
+            <button id="close-title-modal-btn" class="glow-button" style="margin-top: 15px;">Equip & Continue</button>
         </div>
     </div>
 
