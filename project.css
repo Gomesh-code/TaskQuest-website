@@ -1,7 +1,4 @@
-/* At the very top of project.css */
-body {
-    display: none; 
-}
+
 :root {
     --bg-color: #1a1a1a;
     --surface-color: #2c2c2c;
