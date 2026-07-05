@@ -8,8 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-</head>
+    </head>
 <body>
 
     <div id="welcome-screen" class="active">
@@ -62,6 +61,8 @@
                     <div id="xp-bar"></div>
                 </div>
                 <span class="xp-text">XP: <span id="xp-display">0</span> / <span id="xp-needed-display">100</span></span>
+                
+                <button id="open-stats-btn" class="glow-button" style="margin-top: 12px; font-size: 0.85rem; padding: 6px 12px; border-radius: 4px;">📊 View Stats</button>
             </div>
         </header>
 
@@ -101,6 +102,50 @@
             <p>You have earned the title:</p>
             <h3 id="new-title-display" style="font-family: 'Cinzel', serif; font-size: 1.8rem; text-transform: uppercase; margin: 10px 0; text-shadow: 0 0 10px rgba(200, 162, 200, 0.5);">Title</h3>
             <button id="close-title-modal-btn" class="glow-button" style="margin-top: 15px;">Equip & Continue</button>
+        </div>
+    </div>
+
+    <div id="stats-modal" class="modal-hidden">
+        <div class="stats-container">
+            <h2 style="font-family: 'Cinzel', serif; color: #d4af37;">Assign Stat Points</h2>
+            
+            <div class="stat-row">
+                <div class="stat-name">
+                    <span class="stat-title">Strength</span>
+                    <span class="stat-desc">Attack</span>
+                </div>
+                <div class="stat-value" id="stat-str">0</div>
+                <div class="stat-gain">+10</div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-name">
+                    <span class="stat-title">Vitality</span>
+                    <span class="stat-desc">Defense / HP</span>
+                </div>
+                <div class="stat-value" id="stat-vit">0</div>
+                <div class="stat-gain">+10</div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-name">
+                    <span class="stat-title">Intelligence</span>
+                    <span class="stat-desc">Additional MP / Cooldown</span>
+                </div>
+                <div class="stat-value" id="stat-int">0</div>
+                <div class="stat-gain">+10</div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-name">
+                    <span class="stat-title">Perception</span>
+                    <span class="stat-desc">Precision</span>
+                </div>
+                <div class="stat-value" id="stat-per">0</div>
+                <div class="stat-gain">+10</div>
+            </div>
+
+            <button id="close-stats-btn" class="glow-button confirm-btn" style="width: 100%; margin-top: 25px;">Confirm</button>
         </div>
     </div>
 
