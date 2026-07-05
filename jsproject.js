@@ -89,6 +89,7 @@ const levelTitles = [
     { level: 200, title: "Master of Shadows Dawn Sentinel" },
     { level: 180, title: "Master of Shadows Titan of Twilight" },
     { level: 150, title: "Grandmaster of Shadows" },
+    { level: 125, title: "Monarch of Shadows Liberator" },
     { level: 100, title: "Champion of the Realm" },
     { level: 75, title: "King of Yellow and Black" },
     { level: 65, title: "Monarch of Shadows Master of Abyss" },
