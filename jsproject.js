@@ -66,6 +66,7 @@ const openStatsBtn = document.getElementById('open-stats-btn');
 const closeStatsBtn = document.getElementById('close-stats-btn');
 const statStr = document.getElementById('stat-str');
 const statVit = document.getElementById('stat-vit');
+const statAgi = document.getElementById('stat-agi');
 const statInt = document.getElementById('stat-int');
 const statPer = document.getElementById('stat-per');
 
@@ -406,6 +407,7 @@ function updateStatsUI() {
     // Inject into DOM
     statStr.textContent = calculatedStat;
     statVit.textContent = calculatedStat;
+    statAgi.textContent = calculatedStat;
     statInt.textContent = calculatedStat;
     statPer.textContent = calculatedStat;
 }
