@@ -37,9 +37,11 @@ h1, h2 {
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
+
 #welcome-screen.active {
     display: flex;
 }
+
 .welcome-container {
     background-color: var(--surface-color);
     padding: 2rem 3rem;
@@ -51,6 +53,7 @@ h1, h2 {
     max-height: 90vh;
     overflow-y: auto;
 }
+
 #username-input {
     width: 80%;
     padding: 10px;
@@ -61,6 +64,7 @@ h1, h2 {
     font-family: 'Poppins';
     border-radius: 5px;
 }
+
 #class-selection {
     display: flex;
     justify-content: center;
@@ -68,6 +72,7 @@ h1, h2 {
     flex-wrap: wrap;
     margin: 1.5rem 0;
 }
+
 .class-card {
     cursor: pointer;
     border: 2px solid #555;
@@ -79,17 +84,18 @@ h1, h2 {
     flex-direction: column;
     align-items: center;
 }
+
 .class-card span {
     font-size: 0.9rem;
     margin-top: 0.5rem;
     font-family: 'Cinzel';
 }
+
 .class-card:hover, .class-card.selected {
     border-color: var(--primary-color);
     box-shadow: 0 0 10px var(--glow-color);
     transform: translateY(-5px);
 }
-
 
 /* --- Main App Container --- */
 #app-container {
@@ -101,6 +107,7 @@ h1, h2 {
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
     display: none; /* Initially hidden */
 }
+
 #app-container.active {
     display: block;
 }
@@ -114,11 +121,45 @@ header {
     border-bottom: 1px solid #444;
 }
 
-#player-info { font-size: 1.5rem; font-family: 'Cinzel'; }
-#player-class-icon { margin-right: 0.5rem; }
+#player-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 1.5rem; 
+    font-family: 'Cinzel';
+}
 
-#player-stats { width: 50%; }
-.level, .xp-text { font-size: 0.9rem; text-align: center; display: block; margin: 5px 0; }
+.name-container {
+    display: flex;
+    align-items: center;
+}
+
+#player-class-icon { 
+    margin-right: 0.5rem; 
+}
+
+#player-title {
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+    margin-top: 5px;
+    margin-left: 40px;
+    text-shadow: 0 0 5px var(--glow-color);
+    text-transform: uppercase;
+}
+
+#player-stats { 
+    width: 50%; 
+}
+
+.level, .xp-text { 
+    font-size: 0.9rem; 
+    text-align: center; 
+    display: block; 
+    margin: 5px 0; 
+}
+
 .xp-bar-container {
     width: 100%;
     height: 20px;
@@ -127,6 +168,7 @@ header {
     border: 2px solid #0D47A1;
     overflow: hidden;
 }
+
 #xp-bar {
     height: 100%;
     width: 0%;
@@ -141,7 +183,11 @@ header {
     gap: 10px;
     margin-bottom: 2rem;
 }
-#task-input { flex-grow: 1; }
+
+#task-input { 
+    flex-grow: 1; 
+}
+
 #task-input, #difficulty-select {
     padding: 10px;
     border-radius: 5px;
@@ -156,6 +202,7 @@ header {
     padding: 0;
     margin: 0;
 }
+
 .task-item {
     display: flex;
     align-items: center;
@@ -165,14 +212,20 @@ header {
     margin-bottom: 10px;
     border-left: 5px solid;
 }
+
 .task-item.low { border-color: #28a745; }
 .task-item.medium { border-color: #ffc107; }
 .task-item.high { border-color: #dc3545; }
+
 .task-item.completed {
     opacity: 0.6;
     text-decoration: line-through;
 }
-.task-item span { flex-grow: 1; }
+
+.task-item span { 
+    flex-grow: 1; 
+}
+
 .task-buttons button {
     background: none;
     border: none;
@@ -181,6 +234,7 @@ header {
     font-size: 1.2rem;
     margin-left: 10px;
 }
+
 .complete-btn:hover { color: #28a745; }
 .delete-btn:hover { color: #dc3545; }
 
@@ -190,11 +244,13 @@ footer {
     padding-top: 1rem;
     border-top: 1px solid #444;
 }
+
 #achievements-list {
     display: flex;
     gap: 15px;
     justify-content: center;
 }
+
 .achievement {
     font-size: 2.5rem;
     opacity: 0.3;
@@ -202,47 +258,50 @@ footer {
     cursor: help;
     position: relative;
 }
+
 .achievement.unlocked {
     opacity: 1;
     filter: none;
 }
 
-/* --- Modal --- */
-#level-up-modal.modal-hidden{display:none;}
-#level-up-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
+/* --- Modals (Level Up, Title Unlock, & Stats) --- */
+
+/* This ensures ALL modals stay hidden perfectly */
+#level-up-modal.modal-hidden, 
+#title-unlock-modal.modal-hidden,
+#stats-modal.modal-hidden {
+    display: none;
 }
 
-/* --- Modals (Level Up & Title Unlock) --- */
-
-/* This makes BOTH modals float on top of the screen */
+/* Level Up & Title Modal Background */
 #level-up-modal, #title-unlock-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #000000; /* Solid black background */
+    background-color: #000000; 
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 100;
 }
 
-/* This ensures BOTH modals stay hidden until the game triggers them */
-#level-up-modal.modal-hidden, #title-unlock-modal.modal-hidden {
-    display: none;
+/* Stats Modal Background */
+#stats-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 15, 30, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
+/* Shared Modal Box Content */
 .modal-content {
     background-color: var(--surface-color);
     padding: 2rem 4rem;
@@ -251,6 +310,7 @@ footer {
     border: 2px solid var(--gold-gradient);
     animation: fadeIn 0.5s ease;
 }
+
 .modal-content button {
     padding: 10px 20px;
     margin-top: 1rem;
@@ -260,69 +320,7 @@ footer {
     cursor: pointer;
 }
 
-/* --- Utilities --- */
-.glow-button {
-    padding: 10px 20px;
-    border: none;
-    background-color: var(--primary-color);
-    color: white;
-    font-family: 'Cinzel', serif;
-    cursor: pointer;
-    border-radius: 5px;
-    box-shadow: 0 0 5px var(--glow-color), 0 0 15px var(--glow-color);
-    transition: all 0.3s ease;
-}
-.glow-button:hover {
-    box-shadow: 0 0 10px var(--glow-color), 0 0 30px var(--glow-color), 0 0 50px var(--glow-color);
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
-}
-/* --- Player Title Styles --- */
-#player-info {
-    display: flex;
-    flex-direction: column; /* Stacks name and title */
-    align-items: flex-start;
-}
-
-.name-container {
-    display: flex;
-    align-items: center;
-}
-
-#player-title {
-    font-size: 0.8rem;
-    color: var(--primary-color);
-    font-family: 'Cinzel', serif;
-    letter-spacing: 2px;
-    margin-top: 5px;
-    margin-left: 40px; /* Aligns with the username, past the icon */
-    text-shadow: 0 0 5px var(--glow-color);
-    text-transform: uppercase;
-}
-
-/* Hide the modal by default */
-.modal-hidden {
-    display: none;
-}
-
-/* The dark background overlay */
-#stats-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(10, 15, 30, 0.9); /* Dark blue/black tint */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-/* The actual stats box */
+/* Stats Modal Box Details */
 .stats-container {
     background: linear-gradient(180deg, #1a2238 0%, #101423 100%);
     border: 1px solid #4a5a80;
@@ -330,8 +328,9 @@ footer {
     padding: 30px;
     width: 600px;
     color: #e0e6ed;
-    font-family: 'Arial', sans-serif; /* Update to your parchment/fantasy font */
+    font-family: 'Poppins', sans-serif; 
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.3s ease;
 }
 
 .stats-container h2 {
@@ -341,7 +340,6 @@ footer {
     margin-bottom: 20px;
 }
 
-/* Layout for each stat line */
 .stat-row {
     display: flex;
     justify-content: space-between;
@@ -357,7 +355,7 @@ footer {
 }
 
 .stat-title {
-    color: #d4af37; /* Gold color for stat names */
+    color: #d4af37;
     font-weight: bold;
     font-size: 1.2rem;
 }
@@ -386,7 +384,7 @@ footer {
     width: 100%;
     padding: 15px;
     margin-top: 25px;
-    background-color: #d4af37; /* Gold confirm button */
+    background-color: #d4af37;
     color: #000;
     font-size: 1.2rem;
     font-weight: bold;
@@ -398,4 +396,26 @@ footer {
 
 .confirm-btn:hover {
     background-color: #f3c93f;
+}
+
+/* --- Utilities --- */
+.glow-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    font-family: 'Cinzel', serif;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 5px var(--glow-color), 0 0 15px var(--glow-color);
+    transition: all 0.3s ease;
+}
+
+.glow-button:hover {
+    box-shadow: 0 0 10px var(--glow-color), 0 0 30px var(--glow-color), 0 0 50px var(--glow-color);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
 }
