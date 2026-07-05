@@ -60,6 +60,15 @@ const titleUnlockModal = document.getElementById('title-unlock-modal');
 const newTitleDisplay = document.getElementById('new-title-display');
 const closeTitleModalBtn = document.getElementById('close-title-modal-btn');
 
+// Stats Modal Elements
+const statsModal = document.getElementById('stats-modal');
+const openStatsBtn = document.getElementById('open-stats-btn');
+const closeStatsBtn = document.getElementById('close-stats-btn');
+const statStr = document.getElementById('stat-str');
+const statVit = document.getElementById('stat-vit');
+const statInt = document.getElementById('stat-int');
+const statPer = document.getElementById('stat-per');
+
 // ---- GAME STATE ----
 let state = {
     uid: '', 
@@ -384,4 +393,28 @@ closeModalBtn.addEventListener('click', () => {
 
 closeTitleModalBtn.addEventListener('click', () => {
     titleUnlockModal.classList.add('modal-hidden');
+});
+
+// ---- STATS MODAL LOGIC ----
+const BASE_STAT = 10;
+const STAT_GAIN_PER_LEVEL = 10;
+
+function updateStatsUI() {
+    // Calculate stats based on current level
+    const calculatedStat = BASE_STAT + ((state.level - 1) * STAT_GAIN_PER_LEVEL);
+    
+    // Inject into DOM
+    statStr.textContent = calculatedStat;
+    statVit.textContent = calculatedStat;
+    statInt.textContent = calculatedStat;
+    statPer.textContent = calculatedStat;
+}
+
+openStatsBtn.addEventListener('click', () => {
+    updateStatsUI(); // Crunch the numbers
+    statsModal.classList.remove('modal-hidden'); // Show the modal
+});
+
+closeStatsBtn.addEventListener('click', () => {
+    statsModal.classList.add('modal-hidden'); // Hide the modal
 });
